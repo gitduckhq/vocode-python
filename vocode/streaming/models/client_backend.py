@@ -9,14 +9,9 @@ class InputAudioConfig(BaseModel):
     audio_encoding: AudioEncoding
     chunk_size: int
     downsampling: Optional[int] = None
-
-class AudioVoice(str, Enum):
-    sam = "sam"
-    marta = "marta"
-    karim = "karim"
-    laura = "laura"
+    language_code: Optional[str] = None
 
 class OutputAudioConfig(BaseModel):
     sampling_rate: int
     audio_encoding: AudioEncoding
-    voice: Optional[AudioVoice]
+    voice: Optional[str]
