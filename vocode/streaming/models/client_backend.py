@@ -15,3 +15,4 @@ class OutputAudioConfig(BaseModel):
     sampling_rate: int
     audio_encoding: AudioEncoding
     voice: Optional[str]
+    provider: Optional[str]
