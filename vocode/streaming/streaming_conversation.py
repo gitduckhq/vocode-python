@@ -451,7 +451,7 @@ class StreamingConversation(Generic[OutputDeviceType]):
             self.events_task = asyncio.create_task(self.events_manager.start())
 
     async def check_for_idle(self):
-        """Terminates the conversation after 15 seconds if no activity is detected"""
+        """Terminates the conversation after ALLOWED_IDLE_TIME seconds if no activity is detected"""
         while self.is_active():
             if time.time() - self.last_action_timestamp > (
                 self.agent.get_agent_config().allowed_idle_time_seconds
@@ -460,7 +460,7 @@ class StreamingConversation(Generic[OutputDeviceType]):
                 self.logger.debug("Conversation idle for too long, terminating")
                 self.terminate()
                 return
-            await asyncio.sleep(15)
+            await asyncio.sleep(ALLOWED_IDLE_TIME)
 
     async def track_bot_sentiment(self):
         """Updates self.bot_sentiment every second based on the current transcript"""
