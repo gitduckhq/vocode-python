@@ -10,6 +10,7 @@ class InputAudioConfig(BaseModel):
     chunk_size: int
     downsampling: Optional[int] = None
     language_code: Optional[str] = None
+    provider: Optional[str] = None
 
 class OutputAudioConfig(BaseModel):
     sampling_rate: int
