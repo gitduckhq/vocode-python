@@ -107,8 +107,12 @@ class ConversationRouter(BaseRouter):
             except Exception as e:
                 self.logger.exception(e)
                 break
-        output_device.mark_closed()
-        conversation.terminate()
+        try:
+            output_device.mark_closed()
+            conversation.terminate()
+        except Exception as e:
+            self.logger.exception(e)
+            websocket.close(code=1000)
 
     def get_router(self) -> APIRouter:
         return self.router
