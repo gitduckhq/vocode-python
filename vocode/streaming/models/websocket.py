@@ -62,6 +62,7 @@ class AudioConfigStartMessage(
     conversation_id: Optional[str] = None
     subscribe_transcript: Optional[bool] = None
     agent_config: AgentConfig
+    token: Optional[str] = None
 
 
 class ReadyMessage(WebSocketMessage, type=WebSocketMessageType.READY):
