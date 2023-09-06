@@ -17,3 +17,4 @@ class OutputAudioConfig(BaseModel):
     audio_encoding: AudioEncoding
     voice: Optional[str]
     provider: Optional[str]
+    speaking_rate: Optional[int] = None
